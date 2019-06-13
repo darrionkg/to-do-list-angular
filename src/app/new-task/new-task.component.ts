@@ -7,10 +7,10 @@ import { Task } from '../models/task.model';
   styleUrls: ['./new-task.component.css']
 })
 export class NewTaskComponent {
-
-  constructor() { }
-
-  ngOnInit() {
+  @Output() sendTask = new EventEmitter();
+  submitForm(description: string, priority: number) {
+    let newTask: Task = new Task(description, priority);
+    this.sendTask.emit(newTask);
   }
 
 }
